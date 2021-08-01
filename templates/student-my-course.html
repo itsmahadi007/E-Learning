@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="SemiColonWeb"/>
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
+            rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css"/>
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+    <!-- Document Title
+    ============================================= -->
+    <title>{{ user.get_full_name }} | Student</title>
+    {% include 'messages.html' %}
+
+</head>
+
+<body class="stretched side-header open-header close-header-on-scroll no-transition">
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <div id="header-trigger"><i class="icon-line-menu"></i><i class="icon-line-cross"></i></div>
+
+    <!-- Header
+    ============================================= -->
+    <header id="header" class="no-sticky">
+
+        <div id="header-wrap">
+
+            <div class="container clearfix">
+
+                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+                <!-- Logo
+                ============================================= -->
+                <div id="logo" class="nobottomborder">
+                    <a href="#" class="standard-logo" data-dark-logo="images/logo-side.png"><img
+                            src="{% static 'images/logo-side.png' %}" alt="Logo"></a>
+                    <a href="#" class="retina-logo" data-dark-logo="images/logo-side@2x.png"><img
+                            src="{% static 'images/logo-side@2x.png' %}" alt="Logo"></a>
+                </div>
+                <!-- #logo end -->
+
+                <div>
+                    <br>
+                    <br>
+                </div>
+
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav id="primary-menu">
+
+                    <ul>
+                        <li><a href="{% url 'student_browse_course' %}">
+                            <div>Browse Course</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'student_my_course' %}">
+                            <div>My Course</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'log_out' %}">
+                            <div>Log Out</div>
+                        </a>
+                        </li>
+                    </ul>
+
+                </nav><!-- #primary-menu end -->
+
+                <div class="clearfix d-none d-lg-block">
+                    <a href="#" class="social-icon si-small si-borderless si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-twitter">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-gplus">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                        <i class="icon-pinterest"></i>
+                        <i class="icon-pinterest"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-github">
+                        <i class="icon-github"></i>
+                        <i class="icon-github"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header><!-- #header end -->
+
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+
+            <div class="fancy-title title-center title-border topmargin-sm">
+                <h3>My Course</h3>
+            </div>
+
+            <div class="row grid-container" data-layout="masonry" style="overflow: visible">
+
+                {#                {% for i in course %}#}
+                {#                    <div class="flip-card">#}
+                {#                        <div class="flip-card-front dark"#}
+                {#                             style="background-image: url({% static 'images/book2.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <div class="card bg-transparent border-0">#}
+                {#                                    <div class="card-body">#}
+                {#                                        <h3 class="card-title mb-0">{{ i.course_name }}</h3>#}
+                {#                                        <span class="font-italic">by {{ i.teacher.admin.get_full_name }}</span>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <div class="flip-card-back"#}
+                {#                             style="background-image: url({% static 'images/book1.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                {% if i.status == True %}#}
+                {#                                    <p class="mb-2 text-white">This course is <strong>Active</strong> now.#}
+                {#                                    </p>#}
+                {#                                {% else %}#}
+                {#                                    <p class="mb-2 text-white">This course is <strong>Inactive</strong> now.#}
+                {#                                    </p>#}
+                {#                                {% endif %}#}
+                {##}
+                {#                                <a href="{% url 'student_course_preview' i.id %}"#}
+                {#                                   class="btn btn-outline-light lright" id="login-form-submit">View#}
+                {#                                    Course#}
+                {#                                </a>#}
+                {##}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {##}
+                {#                {% endfor %}#}
+                {% for i in course %}
+                    <div class="col-lg-4 mb-4">
+                        <div class="flip-card text-center">
+                            <div class="flip-card-front dark"
+                                 style="background-image: url({% static 'images/book1.jpg' %})">
+                                <div class="flip-card-inner">
+                                    <div class="card bg-transparent border-0 text-center">
+                                        <div class="card-body">
+                                            <i class="icon-line-paper h1"></i>
+                                            <h2 class="card-title">{{ i.course_name }}</h2>
+                                            <p class="card-text font-weight-normal font-italic">
+                                                by {{ i.teacher.admin.get_full_name }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back"
+                                 style="background-image: url({% static 'images/book2.jpg' %});">
+                                <div class="flip-card-inner">
+                                    {% if i.status == True %}
+                                        <p class="mb-2 text-white">This course is <strong>Active</strong> now.
+                                        </p>
+                                    {% else %}
+                                        <p class="mb-2 text-white">This course is <strong>Inactive</strong> now.
+                                        </p>
+                                    {% endif %}
+
+                                    <a href="{% url 'student_course_preview' i.id %}"
+                                       class="btn btn-outline-light lright" id="login-form-submit">View
+                                        Course
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {##}
+                {#                <div class="col-lg-4 mb-4">#}
+                {#                    <div class="flip-card text-center top-to-bottom">#}
+                {#                        <div class="flip-card-front dark"#}
+                {#                             style="background-image: url({% static 'demos/business/images/featured/2.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <div class="card bg-transparent border-0 text-center">#}
+                {#                                    <div class="card-body">#}
+                {#                                        <h3 class="card-title">Special title treatment</h3>#}
+                {#                                        <p class="card-text font-weight-normal">With supporting text below as a natural#}
+                {#                                            lead-in to additional content.</p>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <div class="flip-card-back"#}
+                {#                             style="background-image: url({% static 'demos/business/images/featured/3.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <p class="mb-2 text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit.#}
+                {#                                    Alias cum repellat velit.</p>#}
+                {#                                <button type="button" class="btn btn-outline-light mt-2">View Details</button>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {##}
+                {#                <div class="col-lg-4 mb-4">#}
+                {#                    <div class="flip-card text-center">#}
+                {#                        <div class="flip-card-front dark" data-height-xl="505"#}
+                {#                             style="background-image: url({% static 'demos/ecommerce/images/catagories/1.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <div class="card bg-transparent border-0 text-center">#}
+                {#                                    <div class="card-body">#}
+                {#                                        <i class="icon-line2-briefcase h1"></i>#}
+                {#                                        <h3 class="card-title">Special title treatment</h3>#}
+                {#                                        <p class="card-text font-weight-normal">With supporting text below as a natural#}
+                {#                                            lead-in to additional content.</p>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <div class="flip-card-back" data-height-xl="505"#}
+                {#                             style="background-image: url({% static 'demos/ecommerce/images/catagories/2.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <p class="mb-2 text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit.#}
+                {#                                    Alias cum repellat velit.</p>#}
+                {#                                <button type="button" class="btn btn-outline-light mt-2">View Details</button>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {##}
+                {#                <div class="col-lg-4 mb-4">#}
+                {#                    <div class="flip-card text-center top-to-bottom">#}
+                {#                        <div class="flip-card-front bg-info dark" data-height-xl="200">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <div class="card bg-transparent border-0 text-center">#}
+                {#                                    <div class="card-body">#}
+                {#                                        <i class="icon-line2-check h1"></i>#}
+                {#                                        <h3 class="card-title">Special title treatment</h3>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <div class="flip-card-back" data-height-xl="200"#}
+                {#                             style="background-image: url({% static 'demos/ecommerce/images/catagories/3.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <p class="mb-2 text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit.#}
+                {#                                    Alias cum repellat velit.</p>#}
+                {#                                <button type="button" class="btn btn-outline-light mt-2">View Details</button>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {##}
+                {#                <div class="col-lg-4 mb-4">#}
+                {#                    <div class="flip-card top-to-bottom">#}
+                {#                        <div class="flip-card-front dark" data-height-xl="200"#}
+                {#                             style="background-image: url({% static 'demos/photography/images/items/3.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <div class="card bg-transparent border-0">#}
+                {#                                    <div class="card-body">#}
+                {#                                        <h3 class="card-title mb-0">Beautiful Nature</h3>#}
+                {#                                        <span class="font-italic">New Zealand</span>#}
+                {#                                    </div>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <div class="flip-card-back" data-height-xl="200"#}
+                {#                             style="background-image: url({% static 'demos/photography/images/items/2.jpg' %});">#}
+                {#                            <div class="flip-card-inner">#}
+                {#                                <p class="mb-2 text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit.#}
+                {#                                    Alias cum repellat velit.</p>#}
+                {#                                <button type="button" class="btn btn-outline-light mt-2">View Details</button>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+            </div>
+
+        </div>
+    </div>
+
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- External JavaScripts
+============================================= -->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="{% static 'js/functions.js' %}"></script>
+
+</body>
+
+</html>

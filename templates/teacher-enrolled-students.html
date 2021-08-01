@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="SemiColonWeb"/>
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
+            rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css"/>
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css"/>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Document Title
+    ============================================= -->
+    <title>{{ user.get_full_name }} | Teacher</title>
+    {% include 'messages.html' %}
+
+</head>
+
+<body class="stretched side-header open-header close-header-on-scroll no-transition">
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <div id="header-trigger"><i class="icon-line-menu"></i><i class="icon-line-cross"></i></div>
+
+    <!-- Header
+    ============================================= -->
+    <header id="header" class="no-sticky">
+
+        <div id="header-wrap">
+
+            <div class="container clearfix">
+
+                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+                <!-- Logo
+                ============================================= -->
+                <div id="logo" class="nobottomborder">
+                    <a href="#" class="standard-logo" data-dark-logo="images/logo-side.png"><img
+                            src="{% static '' %}images/logo-side.png" alt="Logo"></a>
+                    <a href="#" class="retina-logo" data-dark-logo="images/logo-side@2x.png"><img
+                            src="{% static '' %}images/logo-side@2x.png" alt="Logo"></a>
+                </div>
+                <!-- #logo end -->
+
+                <div>
+                    <br>
+                    <br>
+                </div>
+
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav id="primary-menu">
+
+                    <ul>
+                        <li><a href="{% url 'teacher_course' %}">
+                            <div>Course</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'teacher_create_course' %}">
+                            <div>Create Course</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'teacher_enrolled_students' %}">
+                            <div>Enrolled Students</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'log_out' %}">
+                            <div>Log Out</div>
+                        </a>
+                        </li>
+
+
+                    </ul>
+
+                </nav><!-- #primary-menu end -->
+
+                <div class="clearfix d-none d-lg-block">
+                    <a href="#" class="social-icon si-small si-borderless si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-twitter">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-gplus">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                        <i class="icon-pinterest"></i>
+                        <i class="icon-pinterest"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-github">
+                        <i class="icon-github"></i>
+                        <i class="icon-github"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header><!-- #header end -->
+
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+
+            <div class="fancy-title title-center title-border topmargin-sm">
+                <h3>Course</h3>
+            </div>
+            <!--            <h4>Student List</h4>-->
+            {% for i in course %}
+                <div class="fancy-title title-center title-border topmargin-sm">
+                    <h5>{{ i.course_name }}</h5>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for j in total_list %}
+                        {% if j.course_name == i.course_name %}
+                            <tr>
+                                <td>{{ j.id }}</td>
+                                <td>{{ j.first_name }}</td>
+                                <td>{{ j.last_name }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- External JavaScripts
+============================================= -->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="{% static 'js/functions.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="SemiColonWeb"/>
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
+            rel="stylesheet" type="text/css"/>
+
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/swiper.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css"/>
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css"/>
+
+    <!-- Bootstrap File Upload CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/bs-filestyle.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/components/select-boxes.css' %}" type="text/css"/>
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/bs-select.css' %}" type="text/css"/>
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/datepicker.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/components/timepicker.css' %}" type="text/css"/>
+
+    <!-- Range Slider CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/ion.rangeslider.css' %}" type="text/css"/>
+
+    <!-- Star Rating CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/bs-rating.css' %}" type="text/css"/>
+
+    <!-- Bootstrap Switch CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/bs-switches.css' %}" type="text/css"/>
+
+
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Document Title
+    ============================================= -->
+    <title>{{ user.get_full_name }} | Teacher</title>
+    {% include 'messages.html' %}
+
+    <style>
+        .file-caption.icon-visible .file-caption-name {
+            font-family: 'Lato', sans-serif;
+            color: #666;
+        }
+
+        .form-process {
+            position: absolute;
+            -webkit-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+            background-image: none;
+        }
+
+        .form-process > div {
+            background-color: #999;
+        }
+
+        .form-process,
+        #template-contactform-submitted,
+        .template-contactform-complete .form-process {
+            display: none;
+            opacity: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .template-contactform-processing .form-process {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+
+</head>
+
+<body class="stretched side-header open-header close-header-on-scroll no-transition">
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <div id="header-trigger"><i class="icon-line-menu"></i><i class="icon-line-cross"></i></div>
+
+    <!-- Header
+    ============================================= -->
+    <header id="header" class="no-sticky">
+
+        <div id="header-wrap">
+
+            <div class="container clearfix">
+
+                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+                <!-- Logo
+                ============================================= -->
+                <div id="logo" class="nobottomborder">
+                    <a href="#" class="standard-logo" data-dark-logo="images/logo-side.png"><img
+                            src="{% static 'images/logo-side.png' %}" alt="Logo"></a>
+                    <a href="#" class="retina-logo" data-dark-logo="images/logo-side@2x.png"><img
+                            src="{% static 'images/logo-side@2x.png' %}" alt="Logo"></a>
+                </div>
+                <!-- #logo end -->
+
+                <div>
+                    <br>
+                    <br>
+                </div>
+
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav id="primary-menu">
+
+                    <ul>
+                        <li><a href="{% url 'teacher_course' %}">
+                            <div>Course</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'teacher_create_course' %}">
+                            <div>Create Course</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'teacher_enrolled_students' %}">
+                            <div>Enrolled Students</div>
+                        </a>
+                        </li>
+                        <li><a href="{% url 'log_out' %}">
+                            <div>Log Out</div>
+                        </a>
+                        </li>
+
+
+                    </ul>
+
+                </nav><!-- #primary-menu end -->
+
+                <div class="clearfix d-none d-lg-block">
+                    <a href="#" class="social-icon si-small si-borderless si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-twitter">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-gplus">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                        <i class="icon-pinterest"></i>
+                        <i class="icon-pinterest"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-github">
+                        <i class="icon-github"></i>
+                        <i class="icon-github"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header><!-- #header end -->
+
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+
+
+            <!-- Content ============================================= -->
+            <section id="content">
+
+                <div class="content-wrap ">
+
+                    <div class="container">
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-10">
+                                <div class="card shadow-sm">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">New Course Form</h4>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="acc_content clearfix">
+                                            <form id="login-form" name="login-form" class="nobottommargin"
+                                                  action="{% url 'create_course' %}"
+                                                  method="post">
+                                                {% csrf_token %}
+                                                <div class="col_full">
+                                                    <label for="login-form-username">Course Name:</label>
+                                                    <input type="text" id="login-form-username" name="courseName"
+                                                           value=""
+                                                           class="form-control" required/>
+                                                </div>
+
+                                                <fieldset class="form-group">
+                                                    <div class="row">
+                                                        <legend class="col-form-label col-sm-2 pt-0"
+                                                                style="font-weight: bold ">This course is now
+                                                        </legend>
+                                                        <div class="col-sm-10">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="gridRadios"
+                                                                       id="gridRadios1" value="1" checked>
+                                                                <label class="form-check-label" for="gridRadios1">
+                                                                    Active
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="gridRadios"
+                                                                       id="gridRadios2" value="2">
+                                                                <label class="form-check-label" for="gridRadios2">
+                                                                    Inactive
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <div class="col_full nobottommargin">
+                                                    <button class="btn btn-outline-dark" id="login-form-submit"
+                                                            name="login-form-submit" value="login">Next
+                                                    </button>
+                                                    <!--                                <a href="#" class="fright">Forgot Password?</a>-->
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section><!-- #content end -->
+
+
+        </div>
+    </div>
+
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- External JavaScripts
+============================================= -->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/plugins.min.js' %}"></script>
+
+<!-- Bootstrap File Upload Plugin -->
+<script src="{% static 'js/components/bs-filestyle.js' %}"></script>
+
+<!-- Select-Boxes Plugin -->
+<script src="{% static 'js/components/select-boxes.js' %}"></script>
+
+<!-- Bootstrap Select Plugin -->
+<script src="{% static 'js/components/bs-select.js' %}"></script>
+
+<!-- Date & Time Picker JS -->
+<script src="{% static 'js/components/moment.js' %}"></script>
+<script src="{% static 'js/components/datepicker.js' %}"></script>
+<script src="{% static 'js/components/timepicker.js' %}"></script>
+
+<!-- Include Date Range Picker -->
+<script src="{% static 'js/components/daterangepicker.js' %}"></script>
+
+<!-- Range Slider Plugin -->
+<script src="{% static 'js/components/rangeslider.min.js' %}"></script>
+
+<!-- Star Rating Plugin -->
+<script src="{% static 'js/components/star-rating.js' %}"></script>
+
+<!-- Select-Splitter Plugin -->
+<script src="{% static 'js/components/selectsplitter.js' %}"></script>
+
+<!-- TinyMCE Plugin -->
+<script src="{% static 'js/components/tinymce/tinymce.min.js' %}"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="{% static 'js/functions.js' %}"></script>
+
+<script>
+
+    jQuery(document).ready(function () {
+
+        jQuery(".range_01").ionRangeSlider({
+            grid: true,
+            min: 18,
+            max: 70,
+            from: 30,
+            prefix: "Age ",
+            max_postfix: "+"
+        });
+
+        jQuery(".select-tags").select2({
+            tags: true,
+            placeholder: "Add Values and Press Enter"
+        });
+
+        jQuery('.datetimepicker1').datetimepicker();
+
+        jQuery('.selectsplitter').selectsplitter();
+
+        tinymce.init({
+            selector: '.textarea-message',
+            menubar: false,
+            setup: function (editor) {
+                editor.on('change', function (e) {
+                    editor.save();
+                });
+            }
+        });
+
+    });
+
+
+</script>
+
+</body>
+
+</html>
